@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Müzik Türü Ekle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css" />
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  </head>
+  <body>
+    <div class="container" style="width:50%;margin-top:60px;">
+      <form method="POST" action="/muzikturuekle">
+        <div class="field">
+          <label class="label">Müzik Türü</label>
+          <div class="control">
+            <input class="input" type="text" name="MuzikTuruEkle" placeholder="Eklemek istediğiniz müzik türünü yazınız" />
+          </div>
+        </div>
+        <div class="control">
+          <button type="submit" class="button is-primary" style="    margin-left: 176px;width: 50%;">Ekle</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

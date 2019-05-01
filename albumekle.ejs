@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Albüm Ekle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css" />
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  </head>
+  <body>
+    <div class="container" style="width:50%;margin-top:60px;">
+      <form method="POST" action="/albumekle">
+        <div class="field">
+          <label class="label">Albüm Ekle</label>
+          <div class="control">
+            <input class="input" type="text" name="albumAdi" placeholder="Eklemek istediğiniz albümü yazınız" />
+          </div>
+          <br />
+          <select name="sanatciId">
+            <% veri[0].forEach(function(p){ %>
+            <option value="<%= p.SanatciId %>"><%= p.SanatciId %> - <%= p.SanatciAdi %></option>
+            <% }); %>
+          </select>
+          <br />
+          <select name="muzikturId">
+            <% veri[1].forEach(function(p){ %>
+            <option value="<%= p.MuzikTurId %>"><%= p.MuzikTurId %> - <%= p.MuzikTur %></option>
+            <% }); %>
+          </select>
+          <br />
+
+          <div class="control">
+            <input class="input" type="date" name="cikisTarihi" placeholder="Çıkış Tarihini Yazınız" />
+          </div>
+        </div>
+        <div class="control">
+          <button type="submit" class="button is-primary" style="margin-left: 176px;width: 50%;">Ekle</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

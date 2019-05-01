@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Artist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css" />
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  </head>
+
+  <body>
+    <div class="control">
+      <a href="/sanatciekle"> <button class="button is-primary" style="margin: 12px auto;margin-left: 150px;">Yeni Sanatçı Ekle</button></a>
+    </div>
+    <div class="control">
+      <a href="muzikturuekle"> <button class="button is-primary" style="margin: -48px auto;margin-left: 474px;">Yeni Müzik Türü Ekle</button></a>
+    </div>
+    <div class="control">
+      <a href="albumekle"> <button class="button is-primary" style="    margin-left: 847px; margin-top: -72px;">Yeni Albüm Ekle</button></a>
+    </div>
+
+    <div class="container">
+      <table class="table is-bordered">
+        <tr>
+          <th>Album Id</th>
+          <th>Album Adı</th>
+          <th>Cikis Tarihi</th>
+          <th>Sanatçı ID</th>
+          <th>Müzik Tur Id</th>
+          <th>Güncelle</th>
+          <th>Sil</th>
+        </tr>
+
+        <% veri[0].forEach(function(p){ %>
+        <form method="POST" action="/guncelle">
+          <tr>
+            <td>
+              <%= p.AlbumId %>
+            </td>
+            <td>
+              <%= p.AlbumAdi %>
+            </td>
+
+            <td>
+              <%= p.CikisTarihi %>
+            </td>
+            <td>
+              <%= p.SanatciId %>
+            </td>
+            <td>
+              <%= p.MuzikTurId %>
+            </td>
+
+            <input type="hidden" name="GuncellenecekAlbumId" value="<%= p.AlbumId %>" />
+            <td>
+              <div class="control">
+                <button type="submit" class="button is-primary">Güncelle</button>
+              </div>
+            </td>
+            <td>
+              <div class="control">
+                <button class="button is-primary " type="button">Sil</button>
+              </div>
+            </td>
+          </tr>
+        </form>
+
+        <% }); %>
+      </table>
+
+      <table class="table is-bordered">
+        <tr>
+          <th>Sanatci Id</th>
+          <th>Sanatci Adı</th>
+          <th>Sanatci Yasiyor mu</th>
+          <th>Sanatçı Doğum Tarihi</th>
+          <th>Eklenme Tarihi</th>
+          <th>Güncelle</th>
+          <th>Sil</th>
+        </tr>
+        <% veri[1].forEach(function(p){ %>
+        <form method="POST" action="/sanatci_guncellemeye_gonder">
+          <tr>
+            <td>
+              <%= p.SanatciId %>
+            </td>
+            <td>
+              <%= p.SanatciAdi %>
+            </td>
+
+            <td>
+              <%= p.SanatciYasiyormu %>
+            </td>
+            <td>
+              <%= p.SanatciDogumTarihi %>
+            </td>
+            <td>
+              <%= p.EklenmeTarihi %>
+            </td>
+
+            <input type="hidden" name="guncellenecek_sanatci_id" value="<%= p.SanatciId %>" />
+            <td>
+              <div class="control">
+                <button type="submit" class="button is-primary">Güncelle</button>
+              </div>
+            </td>
+            <td>
+              <div class="control">
+                <button class="button is-primary " type="button">Sil</button>
+              </div>
+            </td>
+          </tr>
+        </form>
+
+        <% }); %>
+      </table>
+
+      <table class="table is-bordered">
+        <tr>
+          <th>MuzikTur</th>
+          <th>MuzikTur Id</th>
+          <th>Güncelle</th>
+          <th>Sil</th>
+        </tr>
+        <% veri[2].forEach(function(p){ %>
+        <form method="POST" action="/muziktur_guncellemeye_gonder">
+          <tr>
+            <td>
+              <%= p.MuzikTur %>
+            </td>
+            <td>
+              <%= p.MuzikTurId %>
+            </td>
+            <td>
+              <div class="control">
+                <button class="button is-primary">Güncelle</button>
+              </div>
+            </td>
+            <td>
+              <div class="control">
+                <button class="button is-primary " type="button">Sil</button>
+              </div>
+            </td>
+          </tr>
+          <input type="hidden" name="guncellenecek_muziktur_id" value="<%= p.MuzikTurId %>" />
+        </form>
+
+        <% }); %>
+      </table>
+    </div>
+  </body>
+</html>
